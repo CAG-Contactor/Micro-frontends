@@ -1,10 +1,10 @@
-package se.caglabs.microfe.backend01;
+package se.caglabs.microfe.backend02;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class Backend01ApplicationTests {
+class Backend02ApplicationTests {
 
 	@Test
 	void contextLoads() {
