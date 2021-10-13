@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="se">
+
+  <head>
+    <base href="/">
+    <title>Labb 2 - Communicating Custom Elements</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600&display=swap"
+          rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+
+    <script src="my-button.js"></script>
+    <script src="my-card.js"></script>
+  </head>
+
+  <body>
+    <main id="app">
+      <h1>Exempel på Custom Elements som kommunicerar</h1>
+      <my-button label="Klicka"></my-button>
+      <my-card class="" label="No clicks yet"></my-card>
+    </main>
+    <script>
+      const myButton = document.querySelector('my-button');
+      const myCard = document.querySelector('my-card');
+      // Koppla ihop event från my-button så att label-attribut på my-card uppdateras
+      myButton.addEventListener('my-button:changed', (event) => {
+        console.log('Got my-button:changed event', event);
+        myCard.setAttribute('label', `Number of clicks: ${event.detail.count}`);
+      })
+      console.log("Started")
+  </script>
+</body>
+
+</html>

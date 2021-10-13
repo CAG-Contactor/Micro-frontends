@@ -1,0 +1,15 @@
+{
+  "name": "facit",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "lab1": "cd lab1-custom-element; live-server --port=4211",
+    "lab2": "cd lab2-custom-element-communication; live-server --port=4212"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "live-server": "^1.2.1"
+  }
+}
