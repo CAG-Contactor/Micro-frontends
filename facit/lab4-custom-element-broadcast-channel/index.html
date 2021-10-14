@@ -3,20 +3,27 @@
 
   <head>
     <base href="/">
-    <title>Labb 2 - Communicating Custom Elements</title>
+    <title>Labb 4 - Broadcast Channel</title>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600&display=swap"
           rel="stylesheet">
     <link href="style.css" rel="stylesheet">
 
     <script src="my-button.js"></script>
     <script src="my-card.js"></script>
+    <script src="my-toast.js"></script>
   </head>
 
   <body>
     <main id="app">
-      <h1>Exempel på Custom Elements som kommunicerar</h1>
+      <h1>Exempel på Broadcast Channel</h1>
+      <div class="mb-2">
+        Här visas ett Custom Element som kommunicerar med Broadcast Channel.
+        För mer info se: <a href="https://developer.mozilla.org/en-US/docs/Web/API/Broadcast_Channel_API">Broadcast Channel API</a>
+      </div>
+
       <my-button label="Klicka"></my-button>
-      <my-card class="" label="No clicks yet"></my-card>
+      <my-card label="No clicks yet"></my-card>
+      <my-toast></my-toast>
     </main>
     <script>
       const myButton = document.querySelector('my-button');
@@ -27,7 +34,7 @@
         myCard.setAttribute('label', `Number of clicks: ${event.detail.count}`);
       })
       console.log("Started")
-  </script>
-</body>
+    </script>
+  </body>
 
 </html>

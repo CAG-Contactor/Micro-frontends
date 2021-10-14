@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="se">
+
+  <head>
+    <base href="/">
+    <title>Labb 3 - Communicating Custom Elements</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600&display=swap"
+          rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+
+    <script src="my-button.js"></script>
+    <script src="my-card.js"></script>
+  </head>
+
+  <body>
+    <main id="app">
+      <h1>Exempel på Custom Events</h1>
+      <div class="mb-2">
+        Här visas ett Custom Element som kommunicerar med Custom Events och Attributes.
+        För mer info se:
+        <ul>
+          <li>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements">Using
+              custom elements</a></li>
+          <li>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/CustomEvent">Using
+              shadow DOM</a>
+          </li>
+        </ul>
+      </div>
+
+      <my-button label="Klicka"></my-button>
+      <my-card class="" label="No clicks yet"></my-card>
+    </main>
+    <script>
+      const myButton = document.querySelector('my-button');
+      const myCard = document.querySelector('my-card');
+      // Koppla ihop event från my-button så att label-attribut på my-card uppdateras
+      myButton.addEventListener('my-button:changed', (event) => {
+        console.log('Got my-button:changed event', event);
+        myCard.setAttribute('label', `Number of clicks: ${event.detail.count}`);
+      })
+      console.log("Started")
+    </script>
+  </body>
+
+</html>

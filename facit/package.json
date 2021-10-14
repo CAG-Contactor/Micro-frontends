@@ -4,7 +4,9 @@
   "description": "",
   "scripts": {
     "lab1": "cd lab1-custom-element; live-server --port=4211",
-    "lab2": "cd lab2-custom-element-communication; live-server --port=4212"
+    "lab2": "cd lab2-custom-element-shadow-dom; live-server --port=4212",
+    "lab3": "cd lab3-custom-element-communication; live-server --port=4213",
+    "lab4": "cd lab4-custom-element-broadcast-channel; live-server --port=4214"
   },
   "keywords": [],
   "author": "",
