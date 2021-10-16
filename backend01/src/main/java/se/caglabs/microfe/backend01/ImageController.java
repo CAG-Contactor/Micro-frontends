@@ -28,7 +28,7 @@ public class ImageController {
     private static final Logger logger = LoggerFactory.getLogger(ImageController.class);
 
     private final HttpClient httpClient = HttpClient.newBuilder()
-            .version(HttpClient.Version.HTTP_1_1)
+            .version(HttpClient.Version.HTTP_2)
             .connectTimeout(Duration.ofSeconds(10))
             .followRedirects(HttpClient.Redirect.ALWAYS)
             .build();
