@@ -7,22 +7,6 @@
       this.attachShadow({mode: "open"});
     }
 
-    render() {
-      const label = this.getAttribute('label');
-      this.shadowRoot.innerHTML = `
-      <style>
-      .card {
-        background: rgba(129,209,211,0.74);
-        border: solid rgba(22,37,37,0.74) 1px;
-        border-radius: 6px;
-        padding: 16px 8px;
-        text-align: center;
-      }
-      </style>
-      <div class="card">${label}</div>
-    `;
-    }
-
     connectedCallback() {
       const label = this.getAttribute('label');
 

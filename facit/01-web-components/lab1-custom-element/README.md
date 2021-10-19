@@ -1,4 +1,4 @@
-# Lab 1, skapa ett Custom Element
+# Labb 1, skapa ett Custom Element
 I den här labben ska vi känna lite på hur man skapar ett _Custom Element_. 
 
 Starta servern med 

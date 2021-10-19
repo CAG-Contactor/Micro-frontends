@@ -1,16 +1,19 @@
-class MyCard extends HTMLElement {
-  constructor() {
-    super();
-    this.attachShadow({mode: "open"});
-  }
+// Använd en självexekverande anonym funktion för att inte "smutsa"
+// ner globala namnrymden.
+(function () {
+  class MyCard extends HTMLElement {
+    constructor() {
+      super();
+      this.attachShadow({mode: "open"});
+    }
 
-  static get observedAttributes() {
-    return ['label'];
-  }
+    static get observedAttributes() {
+      return ['label'];
+    }
 
-  render() {
-    const label = this.getAttribute('label');
-    this.shadowRoot.innerHTML = `
+    render() {
+      const label = this.getAttribute('label');
+      this.shadowRoot.innerHTML = `
       <style>
       .card {
         background: rgba(129,209,211,0.74);
@@ -22,25 +25,26 @@ class MyCard extends HTMLElement {
       </style>
       <div class="card">${label}</div>
     `;
+    }
+
+    connectedCallback() {
+      this.render();
+      this.log('connected');
+    }
+
+    disconnectedCallback() {
+      this.log('disconnected');
+    }
+
+    attributeChangedCallback(attr, oldValue, newValue) {
+      this.log('attributeChanged', attr, oldValue, newValue);
+      this.render();
+    }
+
+    log(...args) {
+      console.log('🔘 my-card', ...args);
+    }
   }
 
-  connectedCallback() {
-    this.render();
-    this.log('connected');
-  }
-
-  disconnectedCallback() {
-    this.log('disconnected');
-  }
-
-  attributeChangedCallback(attr, oldValue, newValue) {
-    this.log('attributeChanged', attr, oldValue, newValue);
-    this.render();
-  }
-
-  log(...args) {
-    console.log('🔘 my-card', ...args);
-  }
-}
-
-window.customElements.define('my-card', MyCard);
+  window.customElements.define('my-card', MyCard);
+})();

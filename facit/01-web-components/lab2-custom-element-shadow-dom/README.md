@@ -1,4 +1,4 @@
-# Lab 2, använd Shadow DOM
+# Labb 2, använd Shadow DOM
 I den här labben ska vi använda _Shadow DOM_. 
 
 Starta servern med 
@@ -49,11 +49,11 @@ class CheckoutBuy extends HTMLElement {
 Uppgift
 -------
 
-[index.html](index.html) inkluderar [my-card.js](my-card.js), samt taggen _my-button_:
+[index.html](index.html) inkluderar [my-card.js](my-card.js), samt taggen _my-card_:
 
 ```html
     :
-    <script src="my-button.js"></script>
+    <script src="my-card.js"></script>
     :
     <my-card></my-card>
     :
