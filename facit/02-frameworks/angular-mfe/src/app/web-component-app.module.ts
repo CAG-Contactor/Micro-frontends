@@ -10,6 +10,10 @@ import {WidgetComponent} from "./widget/widget.component";
     PageComponent,
     WidgetComponent
   ],
+  exports: [
+    PageComponent,
+    WidgetComponent
+  ],
   imports: [
     BrowserModule,
   ],

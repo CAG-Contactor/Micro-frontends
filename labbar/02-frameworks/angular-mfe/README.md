@@ -32,36 +32,38 @@ vi den _WebComponentAppModule_.
 import {Injector, NgModule} from '@angular/core'
 import {BrowserModule} from '@angular/platform-browser'
 
-import {AppRoutingModule} from './app-routing.module'
 import {createCustomElement} from '@angular/elements'
 
 import {MyComponent} from './my-component/my.component'
 
 @NgModule({
-    declarations: [
-        // Lägg till alla komponenter som vanligt
-        MyComponent
-    ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule
-    ],
-    providers: [],
-    // BOOTSTRAPPA INTE!!! Vi vill bara starta denna modul och registrera komponenter
-    // bootstrap: [],
-    entryComponents: [
-        // Här lägger vi in de komponenter som vi ska skapa Custom Element för
-        // eftersom de skall skapas dynamiskt
-        MyComponent
-    ]
+  declarations: [
+    // Lägg till alla komponenter som vanligt
+    MyComponent
+  ],
+  exports: [
+    // Exportera så att den kan användas i dev-modulen
+    MyComponent
+  ],
+  imports: [
+    BrowserModule
+  ],
+  providers: [],
+  // BOOTSTRAPPA INTE!!! Vi vill bara starta denna modul och registrera komponenter
+  // bootstrap: [],
+  entryComponents: [
+    // Här lägger vi in de komponenter som vi ska skapa Custom Element för
+    // eftersom de skall skapas dynamiskt
+    MyComponent
+  ]
 })
 export class WebComponentAppModule {
-    constructor(private readonly injector: Injector) {
-        // Skapa Custom Element
-        const MittCustomElement = createCustomElement(MyComponent, {injector});
-        // Registrera 
-        customElements.define('tdo-page', TeamDoodlePageElement);
-    }
+  constructor(private readonly injector: Injector) {
+    // Skapa Custom Element
+    const MittCustomElement = createCustomElement(MyComponent, {injector});
+    // Registrera 
+    customElements.define('tdo-page', TeamDoodlePageElement);
+  }
 }
 ```
 
@@ -147,5 +149,10 @@ lämpligen efter `<body>`, leta efter
 Starta sedan den här applikationen med
 ```shell
 $ npm run start:prod # Startar en server som exponerar dist-katalogen på localhost:4221
+```
+och _App Shell_:
+```shell
+$ cd ../app-shell
+$ npm start # Startar en server på localhost:3000
 ```
 
