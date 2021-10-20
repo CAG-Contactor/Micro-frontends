@@ -1,56 +1,29 @@
-Labb 5-6, App Shell, Angular och React
-======================================
-Här skapar vi ett _App Shell_. Sedan implementerar vi två Micro FE:s som Custom Element med
-[Angular elements](https://angular.io/guide/elements#angular-elements-overview) samt lite
-[React](https://reactjs.org/) genererat med [CRA](https://create-react-app.dev/) och sedan tweakat lite. Sedan stoppar
-vi in dem i vårat _App Shell_.
-
-- Skapa ett App Shell
-- [Labb 5, skapa en Micro Frontend i Angular](angular-mfe/README.md)
-- Labb 6, skapa en Micro Frontend i React
-
-Skapa ett _App Shell_
----------------------
-Jag har redan skapat ett minimalt _App Shell_ baserat på _React_. Detta _App Shell_ inkluderar redan HTML-taggar för _
-Custom Element_
-från respektive Micro-FE:
-
-- `<angular-mfe-page>`, en sida för applikationen
-- `<angular-mfe-widget>`, en widget (fragment) från applikationen
-- `<react-mfe-page>`, en sida för applikationen
-- `<react-mfe-widget>`, en widget (fragment) från applikationen
-
-_App Shell_ är skapat med [create-react-app](https://create-react-app.dev):
-
-```shell
-$ cd facit/02-frameworks
-$ npx create-react-app app-shell --template typescript --use-npm
-$ cd app-shell
-$ npm install --save react-router-dom # Lägg till React Router
-$ npm install --save-dev @types/react-router-dom # ...och tillhörande typdefinitioner
-```
-
-Den innehåller en superenkel [App.tsx](./app-shell/src/App.tsx)
-som visar ett widget-element för respektive Micro FE, samt routar till en sida för respektive Micro FE.
-
-**NOTERA!** Typdefinitioner för respektive _Custom Element_ måste läggas till
-i [react-app-env.d.ts](./app-shell/src/react-app-env.d.ts) för att Typescript inte ska bråka vid kompilering av
-.tsx-filer.
-
 Labb 5, skapa en Micro Frontend i Angular
------------------------------------------
+=========================================
 Angular har en färdig lösning för att skapa _Custom Element_:
 [@angular/element](https://angular.io/guide/elements#angular-elements-overview).
 
 Detta gör att det är ganska enkelt att skapa en Angular-baserad Micro FE. Det finns en färdig function
 `createCustomElement(..)` som omvandlar en Angular-komponent till ett _Custom Element_.
 
-För att underlätta utveckling kan det dock vara användbart att bootstrappa Angular på olika sätt beroende på _
-environment_. För produktion skapar man en egen modul som bara skapar och registrerar _Custom Element_. I utveckling
+Uppgift
+-------
+Här är ett Angular-projekt skapat med _Angular CLI_. 
+
+Anpassa detta så att det kan användas som en Micro FE.
+
+Se till att de två komponenterna [PageComponent](src/app/page/page.component.ts) och 
+[WidgetComponent](src/app/widget/widget.component.ts) exponeras som _Custom Element_.
+
+Vad behöver göras?
+------------------
+### Bootstrapping & moduler
+För att underlätta utveckling kan det dock vara användbart att bootstrappa Angular på olika sätt beroende på 
+_environment_. För produktion skapar man en egen modul som bara skapar och registrerar _Custom Element_. I utveckling
 vill man boostrappa som en standalone-applikation och för detta kan man skapa en egen rotmodul, som boostrappar en
 rot-komponent, men även inkluderar prod-modulen.
 
-### Prod-modul
+#### Prod-modul
 
 Säg att vi har skapat en Angular-komponent: _MyComponent_. Den skall registreras i modulen som används i prod, här kall
 vi den _WebComponentAppModule_.
@@ -92,7 +65,7 @@ export class WebComponentAppModule {
 }
 ```
 
-### Dev-modul
+#### Dev-modul
 
 I modulen som används vid utveckling inkluderar vi prod-modulen
 
@@ -115,7 +88,7 @@ export class DevAppModule {
 }
 ```
 
-### Main
+#### Main
 
 Till sist moddar vi _main.ts_ och väljer vilken modul som skall startas beroende på miljö.
 
@@ -136,3 +109,43 @@ if (environment.production) {
         .catch(err => console.error(err));
 }
 ```
+
+### Integrera i App Shell
+Det som till slut skall inkluderas i [App Shell](../app-shell/README.md) är det som hamnar i `dist`-katalogen efter bygge
+med `npm run build`.
+
+När det gäller global CSS kan det vara läge att prefixa alla klasser med app-specifikt prefix, t.ex `angular-mfe`.
+Eventuell styling som definieras lokalt för komponenter inkapslas normalt i komponentvyn (se [View encapsulation
+](https://angular.io/guide/view-encapsulation)), så de ger inga problem.
+
+Hursomhelst, i labben kan man nöja sig med att bara styla på komponent-nivå och strunta i global CSS.
+Därmed räcker det med att inkludera .js-filer i _App Shell_. Dessutom, för att förenkla bygger vi utan att skapa
+cache-buster med has i filnamnet, men det är bara nu för labben. Skriptet "build" i [package.json](./package.json)
+är förberett för detta.
+
+Sedan inkluderas byggartefakterna (OBS ordningen är viktig):
+- dist/angular-mfe/polyfills.js
+- dist/angular-mfe/runtime.js
+- dist/angular-mfe/main.js
+ 
+i [index.html](../app-shell/public/index.html) för _App Shell_ med script-taggar, typ:
+```html
+:
+<script src="http://localhost:4221/angular-mfe/polyfills.js" async></script>
+:
+```
+lämpligen efter `<body>`, leta efter 
+```html  
+  <!--
+    !!! Micro Frontends !!!
+    Lägg till script includes här!
+  -->
+```
+  
+
+
+Starta sedan den här applikationen med
+```shell
+$ npm run start:prod # Startar en server som exponerar dist-katalogen på localhost:4221
+```
+
