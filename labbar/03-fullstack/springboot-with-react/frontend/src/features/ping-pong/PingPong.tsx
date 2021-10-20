@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
-import './PingPong.css';
+import commonStyles from '../../style/common.module.css';
+import styles from './PingPong.module.css';
 
 const PingPong: React.FC = () => {
   async function doPing() {
@@ -13,11 +14,11 @@ const PingPong: React.FC = () => {
 
   return (
     <section>
-      <div className="container">
-        <button className="btn btn-primary" onClick={doPing}>Send ping to /api/v1/ping</button>
+      <div className={commonStyles.container}>
+        <button className={`${commonStyles.btn} ${commonStyles.btnPrimary}`} onClick={doPing}>Send ping to /api/v1/ping</button>
         {pingResult &&
-        <div className="card centered-card">
-          <p>Got response: <span className="highlight"><strong>{pingResult}</strong></span></p>
+        <div className={`${styles.card} ${styles.centeredCard}`}>
+          <p>Got response: <span className={styles.highlight}><strong>{pingResult}</strong></span></p>
         </div>
         }
       </div>
