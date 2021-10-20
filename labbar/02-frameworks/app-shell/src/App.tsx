@@ -6,7 +6,7 @@ const App: FC = () => (
   <Router>
     <div>
       <nav>
-        <Link to="/">Home</a>
+        <Link to="/">Home</Link>
         <Link to="/angular-mfe-page">Angular Micro Frontend Page</Link>
         <Link to="/react-mfe-page">React Micro Frontend Page</Link>
       </nav>
