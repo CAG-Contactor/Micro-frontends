@@ -1,14 +1,14 @@
 import React, {FC} from 'react'
 import './App.css'
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
+import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom'
 
 const App: FC = () => (
   <Router>
     <div>
       <nav>
-        <a href="/">Home</a>
-        <a href="/angular-mfe-page">Angular Micro Frontend Page</a>
-        <a href="/react-mfe-page">React Micro Frontend Page</a>
+        <Link to="/">Home</a>
+        <Link to="/angular-mfe-page">Angular Micro Frontend Page</Link>
+        <Link to="/react-mfe-page">React Micro Frontend Page</Link>
       </nav>
       <hr/>
       <div className="page-area">
