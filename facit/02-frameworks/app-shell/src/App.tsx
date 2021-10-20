@@ -10,7 +10,7 @@ const App: FC = () => (
         <Link to="/angular-mfe-page">Angular Micro Frontend Page</Link>
         <Link to="/react-mfe-page">React Micro Frontend Page</Link>
       </nav>
-      <hr/>
+      <image-randomizer></image-randomizer>
       <div className="page-area">
         <Switch>
           <Route path="/" exact={true}>
