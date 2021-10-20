@@ -18,10 +18,13 @@ Se till att de två komponenterna [PageComponent](src/app/page/page.component.ts
 Vad behöver göras?
 ------------------
 ### Bootstrapping & moduler
-För att underlätta utveckling kan det dock vara användbart att bootstrappa Angular på olika sätt beroende på 
-_environment_. För produktion skapar man en egen modul som bara skapar och registrerar _Custom Element_. I utveckling
+För att underlätta utveckling och att kunna använda dev-servern kan det dock vara användbart att bootstrappa Angular 
+på olika sätt beroende på _environment_. 
+För produktion skapar man en egen modul som bara skapar och registrerar _Custom Element_. I utveckling
 vill man boostrappa som en standalone-applikation och för detta kan man skapa en egen rotmodul, som boostrappar en
 rot-komponent, men även inkluderar prod-modulen.
+
+Alternativt kan man använda t.ex [Storybook](https://storybook.js.org/).
 
 #### Prod-modul
 
