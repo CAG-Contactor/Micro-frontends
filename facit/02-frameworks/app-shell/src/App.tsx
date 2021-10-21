@@ -16,9 +16,11 @@ const App: FC = () => (
         <Switch>
           <Route path="/" exact={true}>
             <div className="widget-area">
-              <h1>Widgets</h1>
-              <angular-mfe-widget/>
-              <react-mfe-widget/>
+              <h1 style={{textAlign: "center"}}>Widgets</h1>
+              <div style={{display: "flex", justifyContent: "center", gap: "1rem"}}>
+                <angular-mfe-widget/>
+                <react-mfe-widget/>
+              </div>
             </div>
           </Route>
           <Route path="/angular-mfe-page">
