@@ -42,6 +42,7 @@
     ]
   },
   "devDependencies": {
+    "live-server": "^1.2.1",
     "rewire": "^5.0.0"
   }
 }
