@@ -20,10 +20,8 @@
       this.innerHTML = `<img src="http://localhost:8090/api/v1/images/random/${window.innerWidth}/200" alt="En bild"/>`;
     }
 
-    handleClick = () => alert("Knappen har klickats")
-
     log(...args) {
-      console.log('🔘 my-button', ...args);
+      console.log('🔘 image-randomizer ', ...args);
     }
   }
 
