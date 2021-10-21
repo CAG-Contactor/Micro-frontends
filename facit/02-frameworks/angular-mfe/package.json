@@ -5,7 +5,8 @@
     "ng": "ng",
     "start": "ng serve --port 4221",
     "start:prod": "npm run build; live-server --no-browser --port=4221 ./dist",
-    "build": "ng build --configuration production --output-hashing none",
+    "build:prod": "ng build --configuration production --output-hashing none --single-bundle",
+    "build": "ng build --configuration production --output-hashing none --single-bundle",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
@@ -37,6 +38,7 @@
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
     "live-server": "^1.2.1",
+    "ngx-build-plus": "^12.2.0",
     "typescript": "~4.3.5"
   }
 }

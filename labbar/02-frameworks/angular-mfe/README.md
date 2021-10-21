@@ -124,13 +124,18 @@ Eventuell styling som definieras lokalt för komponenter inkapslas normalt i kom
 ](https://angular.io/guide/view-encapsulation)), så de ger inga problem.
 
 Hursomhelst, i labben kan man nöja sig med att bara styla på komponent-nivå och strunta i global CSS.
-Därmed räcker det med att inkludera .js-filer i _App Shell_. Dessutom, för att förenkla bygger vi utan att skapa
-cache-buster med has i filnamnet, men det är bara nu för labben. Skriptet "build" i [package.json](./package.json)
+Därmed räcker det med att inkludera .js-filer i _App Shell_.
+
+För att undvika kollisioner med olika versioner av _Angular_ i olika Micro FE:s är det viktigt att skapa en .js-fil
+med både applikation och runtime. Detta stödjer inte _Angular CLI_ out-of-the-box, så man får lägga till 
+`ngx-build-plus` med `ng add ngx-build-plus` och bygga med `--single-bundle`, så får man en `main.js` och
+en `polyfills.js`.
+
+Dessutom, för att förenkla bygger vi utan att skapa cache-buster med has i filnamnet, men det är bara nu för labben. Skriptet "build" i [package.json](./package.json)
 är förberett för detta.
 
 Sedan inkluderas byggartefakterna (OBS ordningen är viktig):
 - dist/angular-mfe/polyfills.js
-- dist/angular-mfe/runtime.js
 - dist/angular-mfe/main.js
  
 i [index.html](../app-shell/public/index.html) för _App Shell_ med script-taggar, typ:
