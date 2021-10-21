@@ -35,15 +35,12 @@ export default MyComponent
 
 // Custom Element
 export class MyComponentElement extends HTMLElement {
-  private shadow: ShadowRoot;
-
   constructor() {
     super();
-    this.shadow = this.attachShadow({mode: "open"});
   }
 
   connectedCallback() {
-    render(<MyComponent />, this.shadow);
+    render(<MyComponent />, this);
   }
 
   disconnectedCallback() {

@@ -14,15 +14,12 @@ const Page: React.FC = ({}) => {
 
 // Custom Element
 export class PageElement extends HTMLElement {
-  private shadow: ShadowRoot;
-
   constructor() {
     super();
-    this.shadow = this.attachShadow({mode: "open"});
   }
 
   connectedCallback() {
-    render(<Page />, this.shadow);
+    render(<Page />, this);
   }
 
   disconnectedCallback() {

@@ -18,15 +18,12 @@ const Widget: React.FC = ({}) => {
 
 // Custom Element
 export class WidgetElement extends HTMLElement {
-  private shadow: ShadowRoot;
-
   constructor() {
     super();
-    this.shadow = this.attachShadow({mode: "open"});
   }
 
   connectedCallback() {
-    render(<Widget />, this.shadow);
+    render(<Widget />, this);
   }
 
   disconnectedCallback() {

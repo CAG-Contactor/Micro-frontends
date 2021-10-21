@@ -11,6 +11,7 @@ const App: FC = () => (
         <Link to="/react-mfe-page">React Micro Frontend Page</Link>
       </nav>
       <image-randomizer></image-randomizer>
+      <sprbo-ping-pong></sprbo-ping-pong>
       <div className="page-area">
         <Switch>
           <Route path="/" exact={true}>

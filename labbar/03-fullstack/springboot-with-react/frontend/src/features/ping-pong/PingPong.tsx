@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import commonStyles from '../../style/common.module.css';
 import styles from './PingPong.module.css';
+import {render, unmountComponentAtNode} from "react-dom";
 
 const PingPong: React.FC = () => {
   async function doPing() {
@@ -28,3 +29,19 @@ const PingPong: React.FC = () => {
 }
 
 export default PingPong;
+
+// Custom Element
+export class PingPongElement extends HTMLElement {
+  constructor() {
+    super();
+  }
+
+  connectedCallback() {
+    render(<PingPong />, this);
+  }
+
+  disconnectedCallback() {
+    unmountComponentAtNode(this);
+  }
+}
+
