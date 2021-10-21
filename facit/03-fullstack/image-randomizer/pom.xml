@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>se.caglabs.microfe</groupId>
-	<artifactId>backend01</artifactId>
+	<artifactId>image-randomizer</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<properties>
 		<java.version>11</java.version>
