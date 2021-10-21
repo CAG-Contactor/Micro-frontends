@@ -8,18 +8,14 @@
     }
 
     connectedCallback() {
-      this.render();
+      this.innerHTML = `<button type="button">Min knapp</button>`;
       this.addEventListener('click', this.handleClick);
       this.log('connected');
     }
 
     disconnectedCallback() {
-      this.firstChild.removeEventListener('click', this.handleClick);
+      this.removeEventListener('click', this.handleClick);
       this.log('disconnected');
-    }
-
-    render() {
-      this.innerHTML = `<button type="button">Min knapp</button>`;
     }
 
     handleClick = () => alert("Knappen har klickats")
