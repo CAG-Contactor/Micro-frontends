@@ -9,9 +9,9 @@ const App: FC = () => (
         <Link to="/">Home</Link>
         <Link to="/angular-mfe-page">Angular Micro Frontend Page</Link>
         <Link to="/react-mfe-page">React Micro Frontend Page</Link>
+        <Link to="/ping-pong">Ping-pong</Link>
       </nav>
       <image-randomizer></image-randomizer>
-      <sprbo-ping-pong></sprbo-ping-pong>
       <div className="page-area">
         <Switch>
           <Route path="/" exact={true}>
@@ -26,6 +26,9 @@ const App: FC = () => (
           </Route>
           <Route path="/react-mfe-page">
             <react-mfe-page/>
+          </Route>
+          <Route path="/ping-pong">
+            <sprbo-ping-pong></sprbo-ping-pong>
           </Route>
         </Switch>
       </div>

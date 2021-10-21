@@ -5,7 +5,7 @@ import {render, unmountComponentAtNode} from "react-dom";
 
 const PingPong: React.FC = () => {
   async function doPing() {
-    const response = await fetch('/api/v1/ping')
+    const response = await fetch('http://localhost:8100/api/v1/ping')
     const text = await response.text();
     console.log("text:", text);
     setPingResult(text)
