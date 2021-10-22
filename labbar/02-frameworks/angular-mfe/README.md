@@ -13,7 +13,9 @@ Här är ett Angular-projekt skapat med _Angular CLI_.
 Anpassa detta så att det kan användas som en Micro FE.
 
 Se till att de två komponenterna [PageComponent](src/app/page/page.component.ts) och 
-[WidgetComponent](src/app/widget/widget.component.ts) exponeras som _Custom Element_.
+[WidgetComponent](src/app/widget/widget.component.ts) exponeras som _Custom Element_ med taggarna:
+- `<angular-mfe-page/>`
+- `<angular-mfe-widget/>`
 
 Vad behöver göras?
 ------------------
@@ -65,8 +67,11 @@ export class WebComponentAppModule {
     // Skapa Custom Element
     const MittCustomElement = createCustomElement(MyComponent, {injector});
     // Registrera 
-    customElements.define('tdo-page', TeamDoodlePageElement);
+    customElements.define('tdo-page', MittCustomElement);
   }
+
+  ngDoBootstrap() {}
+
 }
 ```
 
