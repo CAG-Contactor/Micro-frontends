@@ -5,7 +5,7 @@
     "ng": "ng",
     "start": "ng serve --port 4221",
     "start:prod": "npm run build; live-server --no-browser --port=4221 ./dist",
-    "build": "ng build --configuration production --output-hashing none",
+    "build": "ng build --configuration production --output-hashing none --single-bundle",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
