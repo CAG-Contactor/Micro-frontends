@@ -80,19 +80,22 @@ export class WebComponentAppModule {
 I modulen som används vid utveckling inkluderar vi prod-modulen
 
 ```typescript
-import {NgModule} from '@angular/core'
+import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core'
 import {DevAppComponent} from './dev-app.component'
 import {WebComponentAppModule} from './web-component-app.module'
 
 @NgModule({
-    declarations: [
-        DevAppComponent // Här deklarerar vi rot-komponenten
-    ],
-    imports: [
-        WebComponentAppModule
-    ],
-    providers: [],
-    bootstrap: [DevAppComponent] // OBS, vi måste bootstrappa rot-komponenten också!
+  declarations: [
+    DevAppComponent // Här deklarerar vi rot-komponenten
+  ],
+  imports: [
+    WebComponentAppModule
+  ],
+  providers: [],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA], // OBS, den här behövs om man 
+                                     // skall använda det registrerade custom-elementet
+                                     // i app.component.html
+  bootstrap: [DevAppComponent] // OBS, vi måste bootstrappa rot-komponenten också!
 })
 export class DevAppModule {
 }
