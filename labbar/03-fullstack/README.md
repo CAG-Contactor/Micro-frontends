@@ -28,13 +28,13 @@ $ npm run start:prod
 
 **Image Randomizer**
 ```
-$ cd facit/03-frameworks/image-randomizer
+$ cd facit/03-fullstack/image-randomizer
 $ mvn install spring-boot:run
 ```
 
-**Image Randomizer**
+**Springboot with React**
 ```
-$ cd facit/03-frameworks/springboot-with-react
+$ cd facit/03-fullstack/springboot-with-react
 $ mvn install
 $ cd backend
 $ mvn spring-boot:run
